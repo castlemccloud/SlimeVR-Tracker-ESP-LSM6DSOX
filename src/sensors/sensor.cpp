@@ -66,6 +66,8 @@ const char * getIMUNameByType(int imuType) {
             return "BMI160";
         case IMU_ICM20948:
             return "ICM20948";
+        case IMU_LSM6DSOX:
+            return "LSM6DSOX";
     }
     return "Unknown";
 }
