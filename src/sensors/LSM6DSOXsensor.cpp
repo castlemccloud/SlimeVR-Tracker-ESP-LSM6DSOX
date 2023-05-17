@@ -78,8 +78,8 @@ void LSM6DSOXsensor::motionLoop()
     
     magneto.getData( Mxyz );
 
-    //mahonyQuaternionUpdate(q, -Axyz[0], Axyz[1], -Axyz[2], -Gxyz[0], Gxyz[1], -Gxyz[2], -Mxyz[0], Mxyz[1], -Mxyz[2], deltat * 1.0e-6f);
-    mahonyQuaternionUpdate(q, -Axyz[0], Axyz[1], -Axyz[2], -Gxyz[0], Gxyz[1], -Gxyz[2], deltat * 1.0e-6f);
+    //mahonyQuaternionUpdate(q, Axyz[0], Axyz[1], Axyz[2], Gxyz[0], Gxyz[1], Gxyz[2], Mxyz[0], Mxyz[1], Mxyz[2], deltat * 1.0e-6f);
+    mahonyQuaternionUpdate(q, Axyz[0], Axyz[1], Axyz[2], Gxyz[0], Gxyz[1], Gxyz[2], deltat * 1.0e-6f);
     quaternion.set(-q[2], q[1], q[3], q[0]);
 
 #if SEND_ACCELERATION
