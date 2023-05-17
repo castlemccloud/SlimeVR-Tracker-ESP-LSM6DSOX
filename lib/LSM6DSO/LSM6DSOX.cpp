@@ -121,7 +121,6 @@ void LSM6DSOXClass::end()
   } else {
     writeRegister(LSM6DSOX_CTRL2_G, 0x00);
     writeRegister(LSM6DSOX_CTRL1_XL, 0x00);
-    _wire->end();
   }
 }
 
@@ -288,7 +287,7 @@ int LSM6DSOXClass::writeRegister(uint8_t address, uint8_t value)
 }
 
 #ifdef LSM6DS_DEFAULT_SPI
-LSM6DSOXClass IMU_LSM6DSOX(LSM6DS_DEFAULT_SPI, PIN_SPI_SS1, LSM6DS_INT);
+//LSM6DSOXClass IMU_LSM6DSOX(LSM6DS_DEFAULT_SPI, PIN_SPI_SS1, LSM6DS_INT);
 #else
-LSM6DSOXClass IMU_LSM6DSOX(Wire, LSM6DSOX_ADDRESS);
+//LSM6DSOXClass IMU_LSM6DSOX(Wire, LSM6DSOX_ADDRESS);
 #endif

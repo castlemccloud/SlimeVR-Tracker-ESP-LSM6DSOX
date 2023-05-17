@@ -85,9 +85,9 @@ void LSM6DSOXsensor::motionLoop()
 #if SEND_ACCELERATION
     {
         // Use the same mapping as in quaternion.set(-q[2], q[1], q[3], q[0]);
-        this->acceleration[0] = -Axyz[1];
-        this->acceleration[1] = Axyz[0];
-        this->acceleration[2] = Axyz[2];
+        this->linearAcceleration[0] = -Axyz[1];
+        this->linearAcceleration[1] = Axyz[0];
+        this->linearAcceleration[2] = Axyz[2];
 
         // get the component of the acceleration that is gravity
         VectorFloat gravity;
@@ -96,9 +96,9 @@ void LSM6DSOXsensor::motionLoop()
         gravity.z = this->quaternion.w * this->quaternion.w - this->quaternion.x * this->quaternion.x - this->quaternion.y * this->quaternion.y + this->quaternion.z * this->quaternion.z;
         
         // subtract gravity from the acceleration vector
-        this->acceleration[0] -= gravity.x;
-        this->acceleration[1] -= gravity.y;
-        this->acceleration[2] -= gravity.z;
+        this->linearAcceleration[0] -= gravity.x;
+        this->linearAcceleration[1] -= gravity.y;
+        this->linearAcceleration[2] -= gravity.z;
     }
 #endif
 
