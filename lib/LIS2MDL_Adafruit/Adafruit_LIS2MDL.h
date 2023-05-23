@@ -104,6 +104,7 @@ public:
   void setDataRate(lis2mdl_rate_t rate);
   bool getEvent(sensors_event_t *);
   bool getData(float* xyz);
+  bool getRaw(int16_t* data);
   void getSensor(sensor_t *);
   void reset(void);
 

@@ -301,6 +301,16 @@ bool Adafruit_LIS2MDL::getData(float *xyz) {
   return true;
 }
 
+bool Adafruit_LIS2MDL::getRaw(int16_t *xyz) {
+
+  Adafruit_BusIO_Register data_reg = Adafruit_BusIO_Register(
+    i2c_dev, spi_dev, ADDRBIT8_HIGH_TOREAD, LIS2MDL_OUTX_L_REG, 6);
+  
+  data_reg.read((uint8_t *)xyz, 6);
+
+  return true;
+}
+
 /**************************************************************************/
 /*!
     @brief  Gets the sensor_t data

@@ -76,7 +76,14 @@ namespace SlimeVR {
             int32_t C[3];
         };
 
-        enum CalibrationConfigType { NONE, BMI160, MPU6050, MPU9250, ICM20948 };
+
+        struct LSM6DSOXCalibrationConfig {
+            // magnetometer offsets
+            float M_B[3];
+            float M_Ainv[3][3];
+        };
+
+        enum CalibrationConfigType { NONE, BMI160, MPU6050, MPU9250, ICM20948, LSM6DSOX };
 
         const char* calibrationConfigTypeToString(CalibrationConfigType type);
 
@@ -88,6 +95,7 @@ namespace SlimeVR {
                 MPU6050CalibrationConfig mpu6050;
                 MPU9250CalibrationConfig mpu9250;
                 ICM20948CalibrationConfig icm20948;
+                LSM6DSOXCalibrationConfig lsm6dsox;
             } data;
         };
     }

@@ -26,6 +26,7 @@
 
 #include "sensor.h"
 #include "mahony.h"
+#include "madgwick.h"
 #include "magneto1.4.h"
 
 #include <LSM6DSOX.h>
@@ -39,22 +40,24 @@ public:
 
     void motionSetup() override final;
     void motionLoop() override final;
-    //void startCalibration(int calibrationType) override final;
+    void startCalibration(int calibrationType) override final;
 
     
 private:
     LSM6DSOXClass imu;
-    Adafruit_LIS2MDL magneto;
+    Adafruit_LIS2MDL mag;
     
-
-    //Quat correction{0, 0, 0, 0};
-    //SlimeVR::Configuration::LSM6DSOXCalibrationConfig m_Calibration;
-
-
     float q[4] {1.0f, 0.0f, 0.0f, 0.0f};
+
+    float Axyz[3]{};
+    float Gxyz[3]{};
+    float Mxyz[3]{};
+
+    SlimeVR::Configuration::LSM6DSOXCalibrationConfig m_Calibration;
+
     // Loop timing globals
-    uint32_t now = 0, last = 0;   //micros() timers
-    float deltat = 0;                  //loop time in seconds
+    uint32_t now = 0, last = 0;         //micros() timers
+    float deltat = 0;                   //loop time in seconds
 };
 
 #endif
